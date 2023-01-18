@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg-dark">
+    <div class="container">
+        {% if 'search' in request.path %}
+        <h2 class="title-page text-light">Резултат от търсенето</h2>
+        {% else %}
+        <h2 class="title-page text-light">Нашият магазин</h2>
+        {% endif %}
+    </div> <!-- container //  -->
+</section>
+    
+    <!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-name bg-dark padding-y-sm">
+    <div class="container">
+    
+    <div class="row">
+        <aside class="col-md-3">
+            
+    <div style="margin-bottom: 10px;" class="card">
+        <article class="filter-group">
+            <header class="card-header">
+                <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                    <i class="icon-control fa fa-chevron-down"></i>
+                    <h6 class="title">Категории</h6>
+                </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1">
+                <div class="card-body">
+                    
+                    <ul class="list-menu">
+                        <li><a href="{% url 'store' %}">Всички категории </a></li>
+                        {% for category in links %}
+                    <li><a href="{{ category.get_url }}">{{ category.category_name }}  </a></li>
+                        {% endfor %}
+                    </ul>
+    
+                </div> <!-- card-body.// -->
+            </div>
+        </article> <!-- filter-group  .// -->
+    </div> <!-- card.// -->
+
+    <div class="card">
+        <article class="filter-group">
+            <form action="{% url 'filter' %}">
+            <header class="card-header">
+                <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                    <i class="icon-control fa fa-chevron-down"></i>
+                    <h6 class="title">Ценови диапазон</h6>
+                </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_3">
+                <div class="card-body">
+
+                    <div class="form-row">
+                    <div class="form-group text-center col-md-6">
+                      <label>Мин</label>
+                      <input class="form-control" type="number" name="min-price" placeholder="0 лв">
+                    </div>
+                    <div class="form-group text-center col-md-6">
+                      <label>Мах</label>
+                      <input class="form-control" type="number" name="max-price" placeholder="0 лв">
+                    </div>
+                    </div> <!-- form-row.// -->
+                    <button class="btn btn-block btn-primary">Приложи</button>
+                </div><!-- card-body.// -->
+            </div>
+        </form>
+        </article> <!-- filter-group .// -->
+    </div> <!-- card.// -->
+
+    
+        </aside> <!-- col.// -->
+        <main class="col-md-9">
+        <header class="border-bottom mb-4 pb-3">
+                {% if product_count == 0 %}
+                <div class="form-inline">
+                <span class="mr-md-auto text-light"><b>Няма намерени продукти</span>
+                </div>
+                {% else %}
+                    {% if product_count == 1 %}
+                    <div class="form-inline">
+                    <span class="mr-md-auto text-light"><b>{{ product_count }}</b> намерен продукт</span>
+                    </div>
+                    {% else %}
+                    <div class="form-inline">
+                    <span class="mr-md-auto text-light"><b>{{ product_count }}</b> намерени продукти</span>
+                    </div>
+                    {% endif %}
+                {% endif %}
+        </header><!-- sect-heading -->
+    
+    <div class="row">
+        {% if products %}
+        {% for product in products %}
+        <div class="col-md-4">
+            <figure class="card card-product-grid">
+                <div class="img-wrap"> 
+                    
+                    <a href="{{ product.get_url }}"><img src="{{ product.images.url }}"></a>
+                    
+                </div> <!-- img-wrap.// -->
+                <figcaption class="info-wrap">
+                    <div class="fix-height">
+                        <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+                        <div class="price-wrap mt-2">
+                            <span class="price">{{ product.price }} лв</span>
+                        </div> <!-- price-wrap.// -->
+                    </div>
+                    {% if product.stock <= 0 %}
+                    <a href="{{ product.get_url }}" class="btn btn-block btn-danger">Изчерпано количество</a>
+                        {% else %}
+                        <a href="{{ product.get_url }}" class="btn btn-block btn-primary">Виж детайлите</a>
+                    {% endif %}
+                </figcaption>
+            </figure>
+        </div> <!-- col.// -->
+        {% endfor %}
+        {% else %}
+        <center>
+            <div style="padding-left:40px" class="text-light">
+                <h2>
+                        Oпитайте отново с различно търсене
+                </h2>
+            </div>
+        </center>
+        {% endif %}
+    </div> <!-- row end.// -->
+
+    <nav class="mt-4" aria-label="Page navigation sample">
+        {% if products.has_other_pages %}
+          <ul class="pagination">
+                {% if products.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{products.previous_page_number}}">Предишна</a></li>
+                {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#">Предишна</a></li>
+                {% endif %}
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                    <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                    {% endif %}
+            {% endfor %}
+                {% if products.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{products.next_page_number}}">Следваща</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">Следваща</a></li>
+                {% endif %}
+          </ul>
+        {% endif %}
+    </nav>
+    
+        </main> <!-- col.// -->
+    
+    </div>
+    
+</div> <!-- container .//  -->
+</section>
+{% endblock content %}

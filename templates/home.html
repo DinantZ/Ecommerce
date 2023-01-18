@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- ++++++++++++++++++++++++++IF I WANT A WHEEL+++++++++++++++++++++++++++++-->
+<section class="section bg-dark padding-y-sm">
+<div class="container">
+
+<header class="section-heading">
+	<a href="{% url 'store' %}" class="btn btn-outline-light float-right">Виж всички</a>
+	<h3 class="section-title text-light">Мебели</h3>
+</header><!-- sect-heading -->
+<div class="row">
+	{% for product in products %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title font-weight-bold">{{ product.product_name }}</a>
+				<div class="font-weight-light">{{ product.type }}</div> <!-- type-wrap.// -->
+				<div class="price mt-1">{{ product.price }} лв</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+	{% endfor %}
+</div> <!-- row.// -->
+</div><!-- container // -->
+</section>
+
+</body>
+</html>
+
+{% endblock content %}

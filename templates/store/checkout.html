@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<section class="section-content bg-dark padding-y bg">
+<section class="section-content padding-y bg coloringlinear">
   <div class="container">
   
   <div class="row">
@@ -100,8 +100,8 @@
           </td>
           <td>
             <div class="price-wrap">
-              <var class="price">{{ cart_item.sub_total }} лв</var>
-              <small class="text-muted">{{ cart_item.product.price }} лв всеки </small>
+              <var class="price">$ {{ cart_item.sub_total }}</var>
+              <small class="text-muted">{{ cart_item.product.price }} USD всеки </small>
             </div> <!-- price-wrap .// -->
           </td>
   

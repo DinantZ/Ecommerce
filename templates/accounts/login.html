@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<section class="section-conten bg-dark padding-y" style="min-height:84vh">
+<section class="section-conten padding-y coloringlinear" style="min-height:84vh ;">
 
 
 {% if request.GET.command == 'verification' %}
@@ -31,15 +31,15 @@
             <div class="form-group">
                 <a href="{% url 'forgotPassword' %}" class="float-right">Забравена парола?</a>
             </div> <!-- form-group form-check .// -->
-
+            
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Влез </button>
+                <button type="submit" class="btn btn-primary btn-block button4"> Влез </button>
             </div> <!-- form-group// -->
         </form>
     </div> <!-- card-body.// -->
 </div> <!-- card .// -->
 
-<p class="text-center mt-4 text-light">Нямаш акаунт? <a href="{% url 'register' %}" class="btn btn-outline-light">Регистрирай се</a></p>
+<p class="text-center mt-4 text-light">Нямаш акаунт? <a href="{% url 'register' %}" class="btn btn-outline-info">Регистрирай се</a></p>
 <br><br>
 {% endif %}
 

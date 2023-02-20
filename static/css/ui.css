@@ -473,7 +473,6 @@ p:last-child {
 /* desktop only */
 /* desktop only .end */
 /* ================ SECTION-FOOTER ==================  */
-
 .section-footer ul li {
   margin-bottom: 5px;
 }
@@ -1412,5 +1411,3 @@ a[class*=card]:hover .title {
   margin-right: 5px;
   display: block;
 }
-
-/*# sourceMappingURL=ui.css.map */

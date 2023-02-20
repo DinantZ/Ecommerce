@@ -51,14 +51,11 @@ $(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	} // end if
 
-
-
-
     
 }); 
 // jquery end
 
 setTimeout(function(){
     $('#message').fadeOut('slow')
-  }, 4000)
+  }, 3000)
 

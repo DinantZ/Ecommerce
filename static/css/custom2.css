@@ -1,0 +1,15 @@
+ .coloringradial{
+    background: radial-gradient(#141e30, #243b55);
+}
+.coloringlinear{
+    background: linear-gradient(#141e30, #243b55);
+}
+.coloringsame{
+    background: linear-gradient(#1a2b53, #1d3550);
+}
+
+
+.button4:hover {
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 5px #0451c4,
+}

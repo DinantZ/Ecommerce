@@ -4,7 +4,7 @@
 {% block content %}
 
 
-<section class="section-content bg-dark padding-y bg">
+<section class="section-content padding-y bg coloringlinear">
 	<div class="container">
 	
 <!-- ============================ COMPONENT 1 ================================= -->
@@ -66,8 +66,8 @@
 	</td>
 	<td> 
 		<div class="price-wrap">
-			<var class="price">{{ cart_item.sub_total }}лв</var>
-			<small class="text-muted">{{ cart_item.product.price }}лв всеки </small>
+			<var class="price">{{ cart_item.sub_total }} USD</var>
+			<small class="text-muted">{{ cart_item.product.price }} USD всеки </small>
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right">
@@ -86,15 +86,15 @@
 		<div class="card-body">
 			<dl class="dlist-align">
 			  <dt>Цена:</dt>
-			  <dd class="text-right">{{total}}лв</dd>
+			  <dd class="text-right">{{total}} USD</dd>
 			</dl>
 			<dl class="dlist-align">
 			  <dt>Данък:</dt>
-			  <dd class="text-right">{{tax}}лв</dd>
+			  <dd class="text-right">{{tax}} USD</dd>
 			</dl>
 			<dl class="dlist-align">
 			  <dt>Общо:</dt>
-			  <dd class="text-right text-dark b"><strong>{{grand_total}}лв</strong></dd>
+			  <dd class="text-right text-dark b"><strong>{{grand_total}} USD</strong></dd>
 			</dl>
 			<hr>
 			<a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Плащане </a>

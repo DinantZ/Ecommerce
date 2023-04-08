@@ -42,7 +42,7 @@ def register(request):
             # USER ACTIVATION
             current_site = get_current_site(request)
             mail_subject = 'Please activate your account'
-            message = render_to_string('accounts/account_verification_email.html', {
+            message = render_to_string('accounts/authentication/account_verification_email.html', {
                 'user': user,
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -172,7 +172,7 @@ def forgotPassword(request):
             # Reset password email
             current_site = get_current_site(request)
             mail_subject = 'Променете паролата си'
-            message = render_to_string('accounts/reset_password_email.html', {
+            message = render_to_string('accounts/authentication/reset_password_email.html', {
                 'user': user,
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -187,7 +187,7 @@ def forgotPassword(request):
         else:
             messages.error(request, 'Акаунтът не съществува!')
             return redirect('forgotPassword')
-    return render(request, 'accounts/forgotPassword.html')
+    return render(request, 'accounts/authentication/forgotPassword.html')
 
 
 def resetpassword_validate(request, uidb64, token):
@@ -222,7 +222,7 @@ def resetPassword(request):
             messages.error(request, 'Паролата не съвпада!')
             return redirect('resetPassword')
     else:
-        return render(request, 'accounts/resetPassword.html')
+        return render(request, 'accounts/authentication/resetPassword.html')
 
 
 @login_required(login_url='login')
@@ -279,7 +279,7 @@ def change_password(request):
         else:
             messages.error(request, 'Паролата не съвпада!')
             return redirect('change_password')
-    return render(request, 'accounts/change_password.html')
+    return render(request, 'accounts/authentication/change_password.html')
 
 
 @login_required(login_url='login')

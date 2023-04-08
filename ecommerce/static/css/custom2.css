@@ -37,12 +37,6 @@
                 0 0 200px #03e9f4;
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
 }
-.a-glow:nth-child(1){
-    filter: hue-rotate(270deg);
-}
-.a-glow:nth-child(2){
-    filter: hue-rotate(110deg);
-}
 .a-glow span{
     position: absolute;
     display: block;

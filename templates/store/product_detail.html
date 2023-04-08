@@ -112,21 +112,22 @@
                 </div>    
                 <br>
 				<h5 class="text-light">
-                    Заглавие на рецензията:
-                </h5>
-				<input type="text" class="form-control" name="subject">
+					Заглавие на рецензията:
+				</h5>
+					<input type="text" class="form-control" name="subject" maxlength="40" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 				<br>
-                <h5 class="text-light">
-                    Рецензията:
-                </h5>
-				<textarea name="review" rows="4" class="form-control"></textarea>
+				<h5 class="text-light">
+					Рецензията:
+				</h5>
+				<textarea name="review" rows="4" class="form-control" maxlength="200" required oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></textarea>
 				<br>
-
-                    {% if user.is_authenticated %}
-							<input type="submit" value="Добави ревю" class="btn btn-primary">
-					{% else %}
-					    <p class="text-light ">Трябва да сте влезли, за да публикувате отзив. <span><a href="{% url 'login' %}" class="btn btn-outline-info">Влез сега</a></span></p>			
-                    {% endif %}
+				{% if user.is_authenticated %}
+				<div class="form-group mb-3">
+					<input type="submit" value="Добави ревю" class="btn btn-primary">
+				</div>
+				{% else %}
+					<p class="text-light ">Трябва да сте влезли, за да публикувате отзив. <span><a href="{% url 'login' %}" class="btn btn-outline-info">Влез сега</a></span></p>
+				{% endif %}
 			</div>
                 {% include 'includes/alerts.html' %}
 		    </form>

@@ -72,7 +72,7 @@ def search(request):
         keyword = request.GET['keyword']
         if keyword:
             products = Product.objects.order_by('-created_date').filter(
-                Q(product_name__contains=keyword) | Q(type__contains=keyword) | Q(hidden_desc__contains=keyword)
+                Q(product_name__contains=keyword) | Q(type__contains=keyword)
             )
             product_count = products.count()
     context = { 

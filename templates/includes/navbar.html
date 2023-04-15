@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse ml-auto" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn btn-outline-light text-light" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle btn btn-outline-info text-light" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Всички категории
           </a>
           <div class="dropdown-menu coloringlinear" aria-labelledby="navbarDropdownMenuLink">
@@ -27,32 +27,31 @@
           </div>
         </li>
       </ul>
-
       <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'search' %}">
         <div class="input-group">
-          <input type="text" class="form-control border-right-0" placeholder="Търси" name="keyword" required>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary border-left-0" type="submit">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
+            <input type="text" class="form-control" placeholder="Търси" name="keyword" required style="font-size: 18px; padding: 12px 20px;background-color: transparent; border-color: #ffffff; color: rgb(255, 255, 255);">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" style="background: #1d3550; color: rgb(255, 255, 255); padding: 10px 20px 10px 10px; height: 42px;display: flex; align-items: center;border-color: #ffffff;">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
-      </form>
+    </form>
 
       <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'dashboard' %}">Табло</a>
+          <a class="nav-link text-light" href="{% url 'dashboard' %}">Табло</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Излез от профила</a>
+          <a class="nav-link text-light" href="{% url 'logout' %}">Излез от профила</a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Вход</a>
+          <a class="nav-link text-light" href="{% url 'login' %}">Вход</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Регистрирай се</a>
+          <a class="nav-link text-light" href="{% url 'register' %}">Регистрирай се</a>
         </li>
       {% endif %}
       </ul>

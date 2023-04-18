@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 AUTH_USER_MODEL = 'accounts.Account'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

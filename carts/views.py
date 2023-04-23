@@ -5,8 +5,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-# Create your views here.
-
 
 def _cart_id(request):
     cart = request.session.session_key

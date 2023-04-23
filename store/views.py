@@ -11,7 +11,6 @@ from .forms import ReviewForm
 from django.contrib import messages
 from orders.models import OrderProduct
 
-# Create your views here.
 
 def store(request, category_slug=None):
     categories = None
